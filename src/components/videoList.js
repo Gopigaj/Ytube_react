@@ -1,7 +1,7 @@
 import React from "react";
 import Video from "./video";
+import ApiKey from "./config";
 
-const ApiKey = "AIzaSyARCbccCAeSsQWNb0DgBWnObEYanJPbBio";
 const result = 10;
 
 class VideoList extends React.Component {
@@ -13,6 +13,7 @@ class VideoList extends React.Component {
     };
 
     this.fetchData = this.fetchData.bind(this);
+    this.displayVideo = this.displayVideo.bind(this);
   }
 
   fetchData(searchTerm) {
@@ -45,6 +46,9 @@ class VideoList extends React.Component {
     }
   }
 
+  displayVideo(newlink, newi) {
+    this.props.onVideoSelect(newlink, newi);
+  }
   render() {
     console.log("video " + this.props.searchTerm);
     return (
@@ -55,8 +59,9 @@ class VideoList extends React.Component {
             image={link[1]}
             title={link[2]}
             description={link[3]}
+            index={i}
             key={i}
-            onChange={this.changeResult}
+            onChange={this.displayVideo}
           />
         ))}
       </div>

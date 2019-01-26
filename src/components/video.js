@@ -5,14 +5,15 @@ class Video extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showComponent: false
+      link: "",
+      i: ""
     };
     this.playVideo = this.playVideo.bind(this);
   }
 
   playVideo() {
-    this.setState({ showComponent: true });
-    console.log("clicked");
+    this.props.onChange(this.props.link, this.props.index);
+    console.log("clicked", this.props.link, this.props.index);
   }
   render() {
     //console.log(this.props.resu);
@@ -21,9 +22,6 @@ class Video extends React.Component {
         <img src={this.props.image} />
         <p>{this.props.title}</p>
         <p>{this.props.description}</p>
-        {this.state.showComponent ? (
-          <DisplayVideo link={this.props.link} i={this.props.i} />
-        ) : null}
       </div>
     );
   }
