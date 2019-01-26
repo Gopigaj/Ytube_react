@@ -56,6 +56,7 @@ class VideoList extends React.Component {
             title={link[2]}
             description={link[3]}
             key={i}
+            onChange={this.changeResult}
           />
         ))}
       </div>
