@@ -1,0 +1,26 @@
+* {
+  margin: 0px 0px;
+  padding: 0px 0px;
+}
+.navbar {
+  flex-direction: initial !important;
+  background-color: #262626 !important;
+}
+
+/*
+.search {
+  height: 60px;
+
+  background-color: #2e412e;
+  padding: 1%;
+  width: 100%;
+}
+
+.btn {
+  color: aliceblue;
+}
+
+.textbar {
+  color: black;
+}
+*/

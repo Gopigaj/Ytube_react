@@ -1,6 +1,7 @@
 import React from "react";
 import Video from "./video";
 import ApiKey from "./config";
+import "./video.css";
 
 const result = 10;
 
@@ -17,7 +18,6 @@ class VideoList extends React.Component {
   }
 
   fetchData(searchTerm) {
-    //this.setState({ searchTerm: searchTerm });
     let finalURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${result}&q=${searchTerm}&key=${ApiKey}`;
     fetch(finalURL)
       .then(response => response.json())
@@ -30,9 +30,13 @@ class VideoList extends React.Component {
         ]);
 
         this.setState({ resultyt });
-        // this.setState({ thumbnailyt });
-        console.log(this.state.resultyt);
-        // console.log(this.state.thumbnailyt);
+        console.log("0th vid url", this.state.resultyt[0]);
+        this.displayVideo(
+          this.state.resultyt[0][0],
+          1,
+          this.state.resultyt[0][2],
+          this.state.resultyt[0][3]
+        );
       })
       .catch(error => {
         console.error(error);
@@ -46,13 +50,14 @@ class VideoList extends React.Component {
     }
   }
 
-  displayVideo(newlink, newi) {
-    this.props.onVideoSelect(newlink, newi);
+  displayVideo(newlink, newi, title, description) {
+    this.props.onVideoSelect(newlink, newi, title, description);
+    console.log("video list ttl", title);
   }
   render() {
     console.log("video " + this.props.searchTerm);
     return (
-      <div>
+      <div className="vlist">
         {this.state.resultyt.map((link, i) => (
           <Video
             link={link[0]}
